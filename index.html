@@ -78,8 +78,25 @@ h1 {
     <div class="smiley-bg"></div>
     <h1>PomeGO™</h1>
     <div class="search-box">
-        <input type="text" placeholder="Search here...">
-        <button>🔍</button>
+        <input type="text" id="searchInput" placeholder="Search here...">
+        <button id="searchButton">🔍</button>
     </div>
+
+<script>
+function performSearch() {
+    const query = document.getElementById('searchInput').value;
+    if(query) {
+        window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+    }
+}
+
+document.getElementById('searchButton').addEventListener('click', performSearch);
+
+document.getElementById('searchInput').addEventListener('keypress', function(e) {
+    if(e.key === 'Enter') {
+        performSearch();
+    }
+});
+</script>
 </body>
 </html>
